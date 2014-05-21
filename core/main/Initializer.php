@@ -10,9 +10,7 @@ class Initializer {
 		$this->app = $app;
 		$this->rw = new RegisterMetabox();
 
-		$this->registerModels();
-		$this->registerControllers();
-		$this->registerViews();
+		$this->registerModels();		
 		$this->registerOptions();
 
 	}
@@ -56,24 +54,8 @@ class Initializer {
 
 		}
 
-	}
+	}	
 
-	private function registerControllers(){
-
-		foreach($this->loadFiles('controller') as $name){
-			$instance = new $name($this->app);
-			$this->app->registerController($instance);
-		}
-
-	}
-
-	private function registerViews(){
-
-		foreach($this->loadFiles('view') as $name){
-			$instance = new $name;
-		}
-
-	}
 
 	private function registerOptions(){
 
